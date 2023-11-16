@@ -1,0 +1,74 @@
+Prac22:Leap year,Marital status
+1)import java.util.Scanner;
+
+public class Leapyear {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a year: ");
+        int year = scanner.nextInt();
+
+        if (isLeapYear(year)) {
+            System.out.println(year + " is a leap year.");
+        } else {
+            System.out.println(year + " is not a leap year.");
+        }
+
+        scanner.close();
+    }
+
+    // Function to check if a year is a leap year
+    public static boolean isLeapYear(int year) {
+        if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+-----------------------------------------------------------------------------------------------------------
+2)
+import java.util.Scanner;
+
+public class MaritalStatus {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input age
+        System.out.print("Enter age: ");
+        int age = scanner.nextInt();
+
+        // Input sex
+        System.out.print("Enter sex (M or F): ");
+        char sex = scanner.next().charAt(0);
+
+        // Input marital status
+        System.out.print("Enter marital status (Y or N): ");
+        char maritalStatus = scanner.next().charAt(0);
+
+        // Determine place of service
+        String placeOfService = determinePlaceOfService(age, sex, maritalStatus);
+
+        // Display result
+        System.out.println("Place of service: " + placeOfService);
+
+        scanner.close();
+    }
+
+    // Function to determine place of service based on rules
+    public static String determinePlaceOfService(int age, char sex, char maritalStatus) {
+        if (sex == 'F') {
+            return "Urban areas";
+        } else if (sex == 'M') {
+            if (age >= 20 && age <= 40) {
+                return "Anywhere";
+            } else if (age > 40 && age <= 60) {
+                return "Urban areas";
+            } else {
+                return "Error: Invalid age";
+            }
+        } else {
+            return "Error: Invalid sex";
+        }
+    }
+}

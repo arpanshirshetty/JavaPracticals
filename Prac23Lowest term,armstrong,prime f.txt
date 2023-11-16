@@ -1,0 +1,123 @@
+Prac23:Lowest term,armstrong,prime factor
+1)
+import java.util.Scanner;
+
+public class LowestTerm {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input fraction
+        System.out.print("Enter the numerator (a): ");
+        int numerator = scanner.nextInt();
+
+        System.out.print("Enter the denominator (b): ");
+        int denominator = scanner.nextInt();
+
+        // Simplify the fraction
+        simplifyFraction(numerator, denominator);
+
+        scanner.close();
+    }
+
+    // Function to find the greatest common divisor (GCD) using Euclidean Algorithm
+    private static int findGCD(int a, int b) {
+        while (b != 0) {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
+
+    // Function to simplify the fraction and print the result
+    private static void simplifyFraction(int numerator, int denominator) {
+        if (denominator == 0) {
+            System.out.println("Error: Denominator cannot be zero.");
+            return;
+        }
+
+        // Find the greatest common divisor (GCD)
+        int gcd = findGCD(numerator, denominator);
+
+        // Simplify the fraction
+        int simplifiedNumerator = numerator / gcd;
+        int simplifiedDenominator = denominator / gcd;
+
+        // Print the result
+        System.out.println("Original Fraction: " + numerator + "/" + denominator);
+        System.out.println("Fraction in Lowest Terms: " + simplifiedNumerator + "/" + simplifiedDenominator);
+    }
+}
+--------------------------------------------------------------------------------------------------------
+2)public class ArmstrongNumber {
+    public static void main(String[] args) {
+        System.out.println("Armstrong numbers between 100 and 500:");
+
+        for (int i = 100; i <= 500; i++) {
+            if (isArmstrongNumber(i)) {
+                System.out.println(i);
+            }
+        }
+    }
+
+    // Function to check if a three-digit number is an Armstrong number
+    public static boolean isArmstrongNumber(int number) {
+        int originalNumber = number;
+        int numberOfDigits = String.valueOf(number).length();
+        int sum = 0;
+
+        while (number > 0) {
+            int digit = number % 10;
+            sum += Math.pow(digit, numberOfDigits);
+            number /= 10;
+        }
+
+        return sum == originalNumber;
+    }
+}
+-----------------------------------------------------------------------------------------------------------
+3)import java.util.Scanner;
+
+public class PrimeFactor {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input a number
+        System.out.print("Enter a number: ");
+        int number = scanner.nextInt();
+
+        System.out.println("Prime factors of " + number + ":");
+        findPrimeFactors(number);
+
+        scanner.close();
+    }
+
+    // Function to find prime factors of a number
+    public static void findPrimeFactors(int number) {
+        if (number < 2) {
+            System.out.println("Prime factors are not defined for numbers less than 2.");
+            return;
+        }
+
+        for (int i = 2; i <= number; i++) {
+            while (number % i == 0 && isPrime(i)) {
+                System.out.println(i);
+                number /= i;
+            }
+        }
+    }
+
+    // Function to check if a number is prime
+    public static boolean isPrime(int num) {
+        if (num < 2) {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
