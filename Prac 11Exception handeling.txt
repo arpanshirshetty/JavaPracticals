@@ -1,0 +1,175 @@
+Prac 11:Exception handeling:
+// create main class:
+
+import java.util.Scanner;
+import exceptionhandlingdemo.InvalidRadiusException;
+import java.io.*; import java.math.*;
+public class Main { public static void main(String[] args) {
+Scanner in = new Scanner(System.in);
+System.out.println(" 0.Exit \n1. Arithmetic Exception \n2. Null Pointer Exception\n3.Array index out of bound Exception \n4.File Exception \n5.User Define Exception \n6.Number formatting \n7.Multiple try catch ");
+ int option = 1;
+ do {
+System.out.print("Enter Your Choice : ");
+int choice = in.nextInt();
+switch (choice)
+{ case 0:
+System.out.println(" Exit ");
+System.exit(0); 
+case 1:
+//ArithmeticException
+int a, b, c, result;
+String t;
+System.out.print("Enter value of a : "); a = in.nextInt();
+System.out.print("Enter value of b : "); b = in.nextInt();
+System.out.print("Enter value of c : "); c = in.nextInt(); try { if (a == 0) {
+throw new ArithmeticException("You Can Not divide by zero");
+}
+else { double determinant = (b * b) - (4 * a * c); if (determinant > 0) { double root1 = Math.abs((-b + Math.sqrt(determinant))/ 2 * a); double root2 = Math.abs((-b - Math.sqrt(determinant))/ 2 * a);
+System.out.println(" The Roots Are : " +
+(float)root1 + " " + "&"+ " " + (float)root2);
+}
+else if (determinant == 0) { double root = (float)Math.abs((-b +
+Math.sqrt(determinant)) / 2 * a);
+System.out.print(" The Root is : " + root);
+}
+else { throw new ArithmeticException("Determinant can not be negative");
+}
+}
+} catch (ArithmeticException e) {
+System.out.println(e);
+}
+
+break;
+case 2:
+//Null Pointer Exception 
+	 String s = null; 
+	try { 
+		char c1 = s.charAt(2); 
+	System.out.println(" Char at index 3 is : " +c1);
+}
+ catch (Exception e) {
+System.out.println(" String Does not exist \n" + e);
+}
+break; 
+case 3:
+//Array index out of bound Exception
+int arr[] = { 0, 1, 2, 3 }; 
+try {
+System.out.println(arr[7]);
+} catch (Exception e) {
+System.out.println(" Req Array index is not available."+ e);
+}
+break; 
+case 4:
+//FileNotFoundException
+try
+{
+FileInputStream f =new FileInputStream("C:\\Users\\DELL\\Desktop\\3rd Year Sem1\\CalculatorAssign2.class");
+DataInputStream n=new DataInputStream(f); 
+System.out.println("File is found");
+}
+catch(FileNotFoundException fn)
+{
+System.out.println("File is not found" + fn);
+}
+break;
+case 5:
+//User Define Exception
+	System.out.print("Enter value of x : \t"); 
+	double x = in.nextDouble();
+	System.out.print("Enter value of y : \t"); 
+	double y = in.nextDouble();
+	System.out.print("Enter value of r : \t");
+	double r = in.nextDouble(); try
+{
+circle cr1 = new circle(x,y,r);
+System.out.println("circle created");
+}
+catch (InvalidRadiusException e)
+{
+e.printError();
+}
+break;
+case 6:
+//Number formatting
+try
+{
+String s1 ="Virat";
+String s2 ="12345"; 
+int x1 =Integer.parseInt(s1);
+System.out.println("Integer number is" + x1);
+}
+catch(NumberFormatException e)
+{
+System.out.println(e+ "is not an integer");
+}
+break;
+ case 7:
+//Multiple try catch
+	 int arr1[]={10,20,30,40}; 
+	 try{ arr1[7]=85;
+System.out.println("Required Array index is available");
+}
+catch(ArrayIndexOutOfBoundsException ai2)
+{
+System.out.println(ai2);
+}
+catch(Exception ai1)
+{
+System.out.println(ai1);
+}
+break; 
+default:
+    System.out.println("Invalid choice. Please select a valid operation (1/2/3/4/5/6/7/8/9/10).");
+    break;
+}
+ {
+	 while (option == 1);
+	 option = in.nextInt();
+	 System.out.print(" Enter : 1 = Continue , 0 = Stop");
+}
+ }
+ while (option == 1);
+ option = in.nextInt();
+}
+}
+//class circle
+
+import exceptionhandlingdemo.InvalidRadiusException;
+
+public class circle
+{
+private double x,y,r;
+public circle(double centerx, double centery, double radius)throws InvalidRadiusException
+{
+if (radius<=0)
+{
+throw new InvalidRadiusException(radius);
+}
+else
+{
+x=centerx;
+y=centery;
+r=radius;
+}
+}
+}
+//create package exception handeling demo
+//class invalidradius exception
+
+package exceptionhandlingdemo;
+public class InvalidRadiusException extends Exception {
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+private double r;
+public InvalidRadiusException(double radius)
+{
+r=radius;
+}
+public void printError()
+{
+System.out.println("Radius ["+r+"] is not valid");
+}
+}

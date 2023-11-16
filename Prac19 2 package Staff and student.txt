@@ -1,0 +1,59 @@
+Prac19: 2 package Staff and student
+
+//Create Student Package
+package Studentpackage;
+import java.util.Scanner;
+
+public class Student {
+    private String studentName;
+    private int studentId;
+
+    public void inputStudentInfo() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter Student Name: ");
+        this.studentName = scanner.nextLine();
+        System.out.print("Enter Student ID: ");
+        this.studentId = scanner.nextInt();
+    }
+
+    public void displayStudentInfo() {
+        System.out.println("Student Name: " + studentName);
+        System.out.println("Student ID: " + studentId);
+    }
+}
+//Create Staffpackage
+package StafFpackage;
+import java.util.Scanner;
+
+public class Staff {
+    private String staffName;
+    private int staffId;
+
+    public void inputStaffInfo() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter Staff Name: ");
+        this.staffName = scanner.nextLine();
+        System.out.print("Enter Staff ID: ");
+        this.staffId = scanner.nextInt();
+    }
+
+    public void displayStaffInfo() {
+        System.out.println("Staff Name: " + staffName);
+        System.out.println("Staff ID: " + staffId);
+    }
+}
+//Create University class
+import Studentpackage.Student;
+import StafFpackage.Staff;
+
+public class UniversitySystem {
+    public static void main(String[] args) {
+        Student student = new Student();
+        student.inputStudentInfo();
+        student.displayStudentInfo();
+
+        Staff staff = new Staff();
+        staff.inputStaffInfo();
+        staff.displayStaffInfo();
+    }
+}

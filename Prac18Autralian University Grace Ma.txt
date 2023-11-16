@@ -1,0 +1,66 @@
+Prac18:Autralian University Grace Marks
+
+//Create Interface
+public interface Sports {
+	int GRACE_MARKS = 5;
+
+    int calculateSportsMarks();
+}
+//Create implement
+class Results extends Exam implements Sports {
+    public Results(String name, int examMarks, int maxMarks) {
+        super(name, examMarks, maxMarks);
+    }
+
+    @Override
+    public int calculateSportsMarks() {
+        int totalMarks = examMarks + GRACE_MARKS;
+        return Math.min(totalMarks, maxMarks);
+    }
+
+    public void displayResult() {
+        System.out.println("Student Name: " + studentName);
+        System.out.println("Exam Marks: " + examMarks);
+        System.out.println("Sports Grace Marks: " + GRACE_MARKS);
+        System.out.println("Final Marks: " + calculateSportsMarks());
+    }
+}
+//Create student class
+public class Student {
+	 protected String studentName;
+	    protected int examMarks;
+	    protected int maxMarks;
+
+	    public Student(String name, int examMarks, int maxMarks) {
+	        this.studentName = name;
+	        this.examMarks = examMarks;
+	        this.maxMarks = maxMarks;
+	    }
+	}
+//Create Exam class
+class Exam extends Student {
+    public Exam(String name, int examMarks, int maxMarks) {
+        super(name, examMarks, maxMarks);
+    }
+}
+//Create Driver Class
+import java.util.Scanner;
+public class DriverClass {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter student name:");
+        String name = scanner.nextLine();
+
+        System.out.println("Enter exam marks:");
+        int examMarks = scanner.nextInt();
+
+        System.out.println("Enter maximum marks:");
+        int maxMarks = scanner.nextInt();
+
+        Results studentResult = new Results(name, examMarks, maxMarks);
+        studentResult.displayResult();
+
+        scanner.close();
+    }
+}

@@ -1,0 +1,82 @@
+Prac 20:DRAW
+Design:Green Rctangle
+//Class graphic
+import javax.swing.*;
+ import java.awt.*;
+public class graphic extends JPanel {
+	public void paint(Graphics g) {
+		String message="g";
+		//Draw filled rectangle
+		g.setColor(Color.green);
+		g.fillRect(210,150,300,270);
+	    //Draw filled Oval
+		g.setColor(Color.white);
+	    g.fillOval(225,150,270,270);
+	    //Draw filled oval
+	    g.setColor(Color.red);
+	    g.fillOval(235,160,250,250);
+		//Draw filled rectangle
+		g.setColor(Color.white);
+		g.fillRect(285,262,150,40);
+		
+	}}
+//Class graphicDemo
+import javax.swing.*;
+import java.awt.*;
+public class graphicDemo extends JFrame{
+	public static void main(String[]args) {
+		new graphicDemo().setVisible(true);
+		JFrame obj=new JFrame();//window box
+		graphic draw=new graphic();
+		obj.setBounds(10,10,692,592);
+		obj.setTitle("GRAPHICS");
+		obj.setResizable(false);
+		obj.setVisible(true);
+		obj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		obj.add(draw);
+	}
+}
+-----------------------------------------------------------------------------------------------------
+//IMAGE:
+class one
+
+import javax.swing.*;
+ import java.awt.*;
+public class graphic extends JPanel {
+	public void paint(Graphics g) {
+		String message="g";
+		 
+		//left cross
+		    g.setColor(Color.black);
+		    g.drawLine(500,400,275,149);
+		    //right cross
+		    g.setColor(Color.black);
+		    g.drawLine(500,155,295,395);
+		    //upper 
+		    g.setColor(Color.black);
+		    g.drawLine(500,155,275,149);
+		    //lower
+		    g.setColor(Color.black);
+		    g.drawLine(500,400,295,395);
+		
+	}}
+
+
+class two
+
+import javax.swing.*;
+import java.awt.*;
+public class graphicDemo extends JFrame{
+	public static void main(String[]args) {
+		new graphicDemo().setVisible(true);
+		JFrame obj=new JFrame();//window box
+		graphic draw=new graphic();
+		obj.setBounds(10,10,692,592);
+		obj.setTitle("GRAPHICS");
+		obj.setResizable(false);
+		obj.setVisible(true);
+		obj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		obj.add(draw);
+	}
+}
+

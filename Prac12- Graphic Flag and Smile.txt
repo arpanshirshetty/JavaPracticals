@@ -1,0 +1,90 @@
+Prac12- Graphic Flag and Smile
+
+Flag
+//Class India.Java
+ import javax.swing.*;
+ import java.awt.*;
+public class India extends JPanel {
+	public void paint(Graphics g) {
+		String message="g";
+		//Draw filled rectangle
+		g.setColor(Color.orange);
+		g.fillRect(150,50,225,50);
+		//Draw filled rectangle
+		g.setColor(Color.white);
+		g.fillRect(150,100,225,50);
+		//Draw filled rectangle
+	    g.setColor(Color.green);
+	    g.fillRect(150,150,225,50);
+	    //Draw Oval
+	    g.setColor(Color.blue);
+	    g.drawOval(240, 100, 50, 50);
+	    g.setColor(Color.blue);
+	    g.drawLine(240,125,290,125);//sleeping line
+	    g.setColor(Color.blue);
+	    g.drawLine(265,100,265,150);//standing line
+	    g.setColor(Color.blue);
+	    g.drawLine(285,114,245,139);
+	    g.setColor(Color.blue);
+	    g.drawLine(245,114,285,139);
+	}}
+
+//Class IndiaDemo:
+import javax.swing.*;
+import java.awt.*;
+public class IndiaDemo extends JFrame{
+	public static void main(String[]args) {
+		new IndiaDemo().setVisible(true);
+		JFrame obj=new JFrame();//window box
+		India draw=new India();
+		obj.setBounds(10,10,692,592);
+		obj.setTitle("Indian Flag");
+		obj.setResizable(false);
+		obj.setVisible(true);
+		obj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		obj.add(draw);
+	}
+}
+----------------------------------------------------------------------------------------------------
+SMILE
+
+//Class Smile
+import javax.swing.*;
+import java.awt.*;
+public class Smile extends JPanel{
+	public void paint(Graphics g) {
+		String message="g";
+		//Draw filled oval
+		g.setColor(Color.yellow);
+		g.fillOval(150, 150, 300, 300);
+		//Draw a oval
+		g.setColor(Color.black);
+		g.drawOval(150, 150, 300, 300);
+		//draw filled oval
+		g.setColor(Color.black);
+		g.fillOval(220,240,20,40);
+		//draw filled oval
+		g.setColor(Color.black);
+		g.fillOval(350,240,20,40);
+		//Draw arc
+		g.drawArc(220,300,160,100,210,140);
+}}
+
+//CLASS SMILE DEMO
+import javax.swing.*;
+import java.awt.*;
+public class SmileDemo extends JFrame {
+	public static void main(String[]args) {
+		new SmileDemo().setVisible(true);
+		JFrame obj=new JFrame();
+		Smile draw=new Smile();
+		obj.setBounds(10,10,692,592);
+		obj.setTitle("Smile");
+		obj.setResizable(false);
+		obj.setVisible(true);
+		obj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		obj.add(draw);
+	}
+	}
+
+----------------------------------------------------------------------------------------------------------------

@@ -1,0 +1,101 @@
+Prac17:Design 3 class
+import java.util.Scanner;
+
+// Student class
+class Student {
+    int rollNumber;
+    String name;
+
+    // Constructor for Student class
+    public Student(int rollNumber, String name) {
+        this.rollNumber = rollNumber;
+        this.name = name;
+    }
+}
+
+// Exam class derived from Student class
+class Exam extends Student {
+    int[] subjectMarks; // Marks in six subjects
+
+    // Constructor for Exam class
+    public Exam(int rollNumber, String name, int[] subjectMarks) {
+        super(rollNumber, name);
+        this.subjectMarks = subjectMarks;
+    }
+}
+
+// Result class derived from Exam class
+class Result extends Exam {
+    int totalMarks;
+    double percentage;
+
+    // Constructor for Result class
+    public Result(int rollNumber, String name, int[] subjectMarks) {
+        super(rollNumber, name, subjectMarks);
+        calculateResult();
+    }
+
+    // Method to calculate total marks and percentage
+    private void calculateResult() {
+        totalMarks = 0;
+
+        // Calculate total marks
+        for (int marks : subjectMarks) {
+            totalMarks += marks;
+        }
+
+        // Calculate percentage
+        percentage = (double) totalMarks / (subjectMarks.length * 100) * 100;
+    }
+
+    // Display result details
+    public void displayResult() {
+        System.out.println("Student Roll Number: " + rollNumber);
+        System.out.println("Student Name: " + name);
+        System.out.println("Subject Marks: " + arrayToString(subjectMarks));
+        System.out.println("Total Marks: " + totalMarks);
+        System.out.println("Percentage: " + percentage + "%");
+    }
+
+    // Helper method to convert an array to a string
+    private String arrayToString(int[] array) {
+        StringBuilder result = new StringBuilder("[");
+        for (int i = 0; i < array.length; i++) {
+            result.append(array[i]);
+            if (i < array.length - 1) {
+                result.append(", ");
+            }
+        }
+        result.append("]");
+        return result.toString();
+    }
+}
+
+public class ResultDemo {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input student details
+        System.out.print("Enter student roll number: ");
+        int rollNumber = scanner.nextInt();
+        scanner.nextLine(); // Consume the newline character
+        System.out.print("Enter student name: ");
+        String name = scanner.nextLine();
+
+        // Input marks for six subjects
+        int[] subjectMarks = new int[6];
+        System.out.println("Enter marks for six subjects:");
+        for (int i = 0; i < 6; i++) {
+            System.out.print("Subject " + (i + 1) + ": ");
+            subjectMarks[i] = scanner.nextInt();
+        }
+
+        // Create Result object
+        Result result = new Result(rollNumber, name, subjectMarks);
+
+        // Display result
+        result.displayResult();
+
+        scanner.close();
+    }
+}

@@ -1,0 +1,81 @@
+Prac9: Multi-threading Multiplication tables
+//Create package Multiplication_table
+
+// class -MultiplicationTableThread5
+
+package Multiplication_table;
+class MultiplicationTableThread5 extends Thread {
+    private int number;
+
+    public MultiplicationTableThread5(int number) {
+        this.number = number;
+    }
+
+    @Override
+    public void run() {
+        System.out.println("Multiplication Table for " + number + ":");
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(number + " x " + i + " = " + (number * i));
+        }
+        System.out.println(); // Adding a newline for better separation
+    }
+}
+-----------------------------------------------------------------------------------------------------
+// class -MultiplicationTableThread7
+
+package Multiplication_table;
+class MultiplicationTableThread7 extends Thread {
+    private int number;
+
+    public MultiplicationTableThread7(int number) {
+        this.number = number;
+    }
+
+    @Override
+    public void run() {
+        System.out.println("Multiplication Table for " + number + ":");
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(number + " x " + i + " = " + (number * i));
+        }
+        System.out.println(); // Adding a newline for better separation
+    }
+}
+-----------------------------------------------------------------------------------------------------------
+// class -MultiplicationTableThread13
+
+package Multiplication_table;
+class MultiplicationTableThread13 extends Thread {
+    private int number;
+
+    public MultiplicationTableThread13(int number) {
+        this.number = number;
+    }
+
+    @Override
+    public void run() {
+        System.out.println("Multiplication Table for " + number + ":");
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(number + " x " + i + " = " + (number * i));
+        }
+        System.out.println(); // Adding a newline for better separation
+    }
+}
+--------------------------------------------------------------------------------------------------
+//class-MultiThreadedTables
+
+package Multiplication_table;
+public class MultiThreadedTables {
+    public static void main(String[] args) {
+        // Create threads for different multiplication tables
+        MultiplicationTableThread5 thread5 = new MultiplicationTableThread5(5);
+        MultiplicationTableThread7 thread7 = new MultiplicationTableThread7(7);
+        MultiplicationTableThread13 thread13 = new MultiplicationTableThread13(13);
+
+        // Start the threads separately
+        thread5.start();
+        
+        thread7.start();
+        
+        thread13.start();
+    }
+}
