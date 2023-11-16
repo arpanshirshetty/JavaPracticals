@@ -1,0 +1,130 @@
+Calculator using switch case:
+
+import java.util.Scanner;
+
+public class Calculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Select operation:");
+        System.out.println("1. Add");
+        System.out.println("2. Subtract");
+        System.out.println("3. Multiply");
+        System.out.println("4. Divide");
+        System.out.println("5. Factorial");
+        System.out.println("6. Square Root");
+        System.out.println("7. Power");
+        System.out.println("8. Absolute Value");
+        System.out.println("9. Minimum");
+        System.out.println("10.Maximum");
+        
+        System.out.print("Enter choice (1-10): ");
+        int choice = scanner.nextInt();
+
+        switch (choice) {
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+                System.out.print("Enter first operand: ");
+                double operand1 = scanner.nextDouble();
+                System.out.print("Enter second operand: ");
+                double operand2 = scanner.nextDouble();
+                performArithmeticOperation(choice, operand1, operand2);
+                break;
+            case 5:
+                System.out.print("Enter a number to find factorial: ");
+                int num = scanner.nextInt();
+                long factorialResult = calculateFactorial(num);
+                System.out.println("Factorial of " + num + " is: " + factorialResult);
+                break;
+            case 6:
+                System.out.print("Enter a number to find square root: ");
+                double sqrtNum = scanner.nextDouble();
+                double sqrtResult = Math.sqrt(sqrtNum);
+                System.out.println("Square root of " + sqrtNum + " is: " + sqrtResult);
+                break;
+            case 7:
+                System.out.print("Enter a base number: ");
+                double num1 = scanner.nextDouble();
+                System.out.print("Enter a exponent number: ");
+                double num2 = scanner.nextDouble();
+                double powerResult=Math.pow(num1, num2);
+                System.out.println("Result: "+powerResult);
+                break;
+            case 8:
+                System.out.print("Enter a number: ");
+                double num3 = scanner.nextDouble();
+                double absValue=Math.abs(num3);
+                System.out.println("Absolute Value of"+num3+ "is:"+absValue);
+                break;
+            case 9:
+                System.out.print("Enter the first number: ");
+                double num4 = scanner.nextDouble();
+                System.out.print("Enter the second number: ");
+                double num5 = scanner.nextDouble();
+                double minResult=Math.min(num4, num5);
+                System.out.println("Minimum of "+num4+"and "+num5+" is "+minResult);
+                break;
+            case 10:
+                System.out.print("Enter a first number: ");
+                double num6 = scanner.nextDouble();
+                System.out.print("Enter a second number: ");
+                double num7 = scanner.nextDouble();
+                double maxResult=Math.max(num6, num7);
+                System.out.println("Maximum of "+num6+"and "+num7+"is "  +maxResult);
+                break;
+                
+                
+                
+            default:
+                System.out.println("Invalid choice!");
+        }
+
+        scanner.close();
+    }
+
+    // Function to perform basic arithmetic operations
+    public static void performArithmeticOperation(int choice, double operand1, double operand2) {
+        double result = 0;
+
+        switch (choice) {
+            case 1:
+                result = operand1 + operand2;
+                break;
+            case 2:
+                result = operand1 - operand2;
+                break;
+            case 3:
+                result = operand1 * operand2;
+                break;
+            case 4:
+                if (operand2 != 0) {
+                    result = operand1 / operand2;
+                } else {
+                    System.out.println("Cannot divide by zero!");
+                    return;
+                }
+                break;
+            default:
+                System.out.println("Invalid operation!");
+                return;
+        }
+
+        System.out.println("Result: " + result);
+    }
+
+    // Function to calculate factorial
+    public static long calculateFactorial(int num) {
+        if (num < 0) {
+            System.out.println("Factorial is not defined for negative numbers.");
+            return -1; // Return an invalid value
+        }
+
+        long factorial = 1;
+        for (int i = 1; i <= num; i++) {
+            factorial *= i;
+        }
+        return factorial;
+    }
+}

@@ -1,0 +1,86 @@
+Prac 2:Rectancle
+
+#Create Rectangle class:
+
+import java.util.Scanner;
+class Rectangle {
+    private double width;
+    private double length;
+    private double area;
+    private String color;
+
+    // Constructor
+    public Rectangle(double width, double length, String color) {
+        this.width = width;
+        this.length = length;
+        this.color = color;
+        this.area = calculateArea();
+    }
+
+    // Method to calculate area
+    private double calculateArea() {
+        return width * length;
+    }
+
+    // Method to check if two rectangles are identical
+    public boolean isIdentical(Rectangle other) {
+        return this.width == other.width && this.length == other.length && this.color.equals(other.color);
+    }
+
+    // Getters for area and color
+    public double getArea() {
+        return area;
+    }
+
+    public String getColor() {
+        return color;
+    }
+}
+------------------------------------------------------------------------------------------------
+#Create another Demo class
+
+import java.util.Scanner;
+public class DemoRectangle {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input for the first rectangle
+        System.out.println("Enter details for the first rectangle:");
+        System.out.print("Width: ");
+        double width1 = scanner.nextDouble();
+        System.out.print("Length: ");
+        double length1 = scanner.nextDouble();
+        scanner.nextLine(); // Consume newline
+        System.out.print("Color: ");
+        String color1 = scanner.nextLine();
+
+        // Input for the second rectangle
+        System.out.println("Enter details for the second rectangle:");
+        System.out.print("Width: ");
+        double width2 = scanner.nextDouble();
+        System.out.print("Length: ");
+        double length2 = scanner.nextDouble();
+        scanner.nextLine(); // Consume newline
+        System.out.print("Color: ");
+        String color2 = scanner.nextLine();
+
+        // Create two rectangle objects
+        Rectangle rectangle1 = new Rectangle(width1, length1, color1);
+        Rectangle rectangle2 = new Rectangle(width2, length2, color2);
+
+        // Compare rectangles
+        if (rectangle1.getArea() == rectangle2.getArea() && rectangle1.getColor().equals(rectangle2.getColor())) {
+            System.out.println("Matching Rectangles");
+            if (rectangle1.isIdentical(rectangle2)) {
+                System.out.println("Identical Rectangles");
+            } else {
+                System.out.println("Non-Identical Rectangles");
+            }
+        } else {
+            System.out.println("Non-matching Rectangles");
+        }
+
+        scanner.close();
+    }
+}
+

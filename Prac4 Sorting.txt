@@ -1,0 +1,108 @@
+Prac 4: Sorting 
+#Create Sort Class
+
+import java.util.Scanner;
+class Sort {
+    public static void sortInt(Integer[] arr) {
+        
+        // Selection sort 
+        
+        int n = arr.length;
+        for (int i = 0; i < n - 1; i++) {
+            int Index = i;
+            for (int j = i + 1; j < n; j++) {
+                if (arr[j] < arr[Index]) {
+                    Index = j;
+                }
+            }
+            
+            int temp = arr[Index];
+            arr[Index] = arr[i];
+            arr[i] = temp;
+        }
+    }
+
+    public static void sortStr(String[] arr) {
+        
+        // Selection sort 
+        
+        int n = arr.length;
+        for (int i = 0; i < n - 1; i++) {
+            int Index = i;
+            for (int j = i + 1; j < n; j++) {
+                if (arr[j].compareTo(arr[Index]) < 0) {
+                    Index = j;
+                }
+            }
+            
+            String temp = arr[Index];
+            arr[Index] = arr[i];
+            arr[i] = temp;
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------
+#Demo Class
+import java.util.Scanner;
+class DemoClass {
+    public static void main(String[] args) {
+        Sort sorter = new Sort();
+        Scanner s = new Scanner(System.in);
+        System.out.println("Choices:\n1.Integer Array Sorting\n2.String Array Sorting");
+        System.out.println("Enter your Choice: ");
+        int ch = s.nextInt();
+
+        switch (ch) {
+            case 1:
+                // Integer array
+                Integer[] intArr = new Integer[5];
+                int n;
+                System.out.println("Enter the number of elements you want to store: ");
+                n = s.nextInt();
+                System.out.println("Enter the Array elements:");
+                for (int i = 0; i < n; i++) {
+                    intArr[i] = s.nextInt();
+                }
+                System.out.println("Original Integer Array:");
+                for (Integer element : intArr) {
+                    System.out.print(element + ", ");
+                }
+
+                sorter.sortInt(intArr);
+
+                System.out.println("\nSorted Integer Array:");
+                for (Integer element : intArr) {
+                    System.out.print(element + ", ");
+                }
+
+                break;
+
+            case 2:
+                // String array
+                String[] strArr = new String[5];
+                int m;
+                System.out.println("Enter the number of elements you want to store: ");
+                m = s.nextInt();
+                System.out.println("Enter the Array elements:");
+                for (int i = 0; i < m; i++) {
+                    strArr[i] = s.next();
+                }
+                System.out.println("\n\nOriginal String Array:");
+                for (String element : strArr) {
+                    System.out.print(element + ", ");
+                }
+
+                sorter.sortStr(strArr);
+
+                System.out.println("\nSorted String Array:");
+                for (String element : strArr) {
+                    System.out.print(element + ", ");
+                }
+                break;
+
+            default:
+                System.out.print("Invalid choice");
+                break;
+        }
+    }
+}

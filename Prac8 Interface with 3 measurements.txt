@@ -1,0 +1,54 @@
+Prac8: Interface with 3 measurements
+
+//Create interface
+
+interface Volume {
+    double calculateInnerVolume(double s1, double s2, double s3);
+    double calculateOuterVolume(double s1, double s2, double s3);
+}
+
+class Part implements Volume {
+    @Override
+    public double calculateInnerVolume(double s1, double s2, double s3) {
+        return (1.0 / 3.0) * Math.PI * s1 * s2 * s3;
+    }
+
+    @Override
+    public double calculateOuterVolume(double s1, double s2, double s3) {
+        return (4.0 / 3.0) * Math.PI * s1 * s2 * s3;
+    }
+
+    public void displayVolumes(double s1, double s2, double s3) {
+        double innerVolume = calculateInnerVolume(s1, s2, s3);
+        double outerVolume = calculateOuterVolume(s1, s2, s3);
+
+        System.out.println("Inner Volume: " + innerVolume);
+        System.out.println("Outer Volume: " + outerVolume);
+    }
+}
+---------------------------------------------------------------------------------------------------
+//CREATE CLASS:
+import java.util.Scanner;
+ public class VolumeExample {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Creating an instance of the Part class
+        Part part = new Part();
+
+        // Taking side measurements from the user
+        System.out.println("Enter side 1:");
+        double side1 = scanner.nextDouble();
+
+        System.out.println("Enter side 2:");
+        double side2 = scanner.nextDouble();
+
+        System.out.println("Enter side 3:");
+        double side3 = scanner.nextDouble();
+
+        // Displaying volumes
+        part.displayVolumes(side1, side2, side3);
+
+        scanner.close();
+    }
+}

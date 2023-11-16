@@ -1,0 +1,129 @@
+PRAC 6:INHERITANCE
+
+1.PLAYER CLASS
+import java.util.Scanner;
+public class Player {
+	public String name;
+	public int age;
+	public String level;
+	public void input()
+	{Scanner sc=new Scanner(System.in);
+	System.out.println("Enter player name:");
+	name=sc.next();
+	System.out.println("Enter player age:");
+	age=sc.nextInt();
+	System.out.println("Enter player level:");
+	level=sc.next();
+	}
+	public void display()
+	{
+		System.out.println("The name of player is "+name);
+		System.out.println("The age of player is "+age);
+		System.out.println("The level of player is "+level);
+	}}
+-----------------------------------------------------------------------------------------------------
+2.CRICKET_PLAYER CLASS
+import java.util.Scanner;
+public class Cricket_player extends Player{
+	public int match;
+	public int run;
+	public int wickets;
+	public void input()
+	{
+	super.input();
+	Scanner sc =new Scanner (System.in);
+	System.out.println("Enter players match:");
+	match=sc.nextInt();
+	System.out.println("Enter players runs:");
+	run=sc.nextInt();
+	System.out.println("Enter players wickets:");
+	wickets=sc.nextInt();
+	}
+	public void display()
+	{
+	super.display();
+	System.out.println("Matches of player is "+match);
+	System.out.println("Runs of player is "+run);
+	System.out.println("The wickets of player is "+wickets);
+	}}
+--------------------------------------------------------------------------------------------------------
+3.FOOTBALL_PLAYER CLASS
+import java.util.Scanner;
+public class Football_player extends Player{
+public int match;
+public int goal;
+public void input()
+{ Player p=new Player();
+  Football_player[] f=new Football_player[10];
+  super.input();
+  Scanner sc =new Scanner(System.in);
+System.out.println("Enter players matches: ");
+match=sc.nextInt();
+System.out.println("Enter players goals:");
+goal=sc.nextInt();
+}
+public void display()
+{
+super.display();
+System.out.println("Matches of player is "+match);
+System.out.println("The goal of player is "+goal);
+}}
+--------------------------------------------------------------------------------------------------
+4.Tennis _player
+import java.util.Scanner;
+public class Tennis_player extends Player{
+public int match;
+public int wins;
+public void input()
+{
+  super.input();
+  Scanner sc =new Scanner (System.in);
+System.out.println("Enter players match:");
+match = sc.nextInt();
+System.out.println("Enter players wins:");
+wins=sc.nextInt();
+}
+public void display(String match)
+{
+super.display();
+System.out.println("Matches of player is "+  match);
+System.out.println("The goal of player is "+wins);
+}}
+---------------------------------------------------------------------------------------------------------
+5.Main class
+import java.util.Scanner;
+public class Main{
+public static void main(String[]args) {
+	int ch;
+	Scanner sc=new Scanner(System.in);
+    System.out.println("Enter choice (1-3):");
+    System.out.println("1.Cricket");
+    System.out.println("2.Football");
+    System.out.println("3.Tennis");
+	ch=sc.nextInt();
+	Player p=new Player();
+	Cricket_player c=new Cricket_player();
+	Football_player f=new Football_player();
+	Tennis_player t= new Tennis_player();
+	switch(ch)
+	{case 1:
+		System.out.println("The player is playing Cricket");
+		c.input();
+		c.display();
+		break;
+	case 2:
+		System.out.println("The player is playing Football");
+		f.input();
+		f.display();
+		break;
+		
+	case 3:
+		System.out.println("The player is playing Tennis");
+		t.input();
+		t.display();
+		break;
+		default:
+			System.out.println("Enter the correct game");
+	}
+}}
+--------------------------------------------------------------------------------------------------------------

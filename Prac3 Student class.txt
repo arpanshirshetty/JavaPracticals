@@ -1,0 +1,95 @@
+Prac 3:Method and contructor overloading class student
+
+import java.util.Scanner;
+public class Student {
+    private String name;
+    private int rollNumber;
+    private int age;
+    private double result;
+    private String city;
+
+    // Default constructor
+    public Student() {
+    }
+
+    // Constructor with name and roll number
+    public Student(String name, int rollNumber) {
+        this.name = name;
+        this.rollNumber = rollNumber;
+    }
+
+    // Constructor with all fields
+    public Student(String name, int rollNumber, int age, double result, String city) {
+        this.name = name;
+        this.rollNumber = rollNumber;
+        this.age = age;
+        this.result = result;
+        this.city = city;
+    }
+
+    // Method to set student details
+    public void setStudentDetails() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter student name: ");
+        name = scanner.nextLine();
+
+        System.out.print("Enter roll number: ");
+        rollNumber = scanner.nextInt();
+
+        System.out.print("Enter age: ");
+        age = scanner.nextInt();
+
+        System.out.print("Enter result: ");
+        result = scanner.nextDouble();
+
+        scanner.nextLine(); // Consume the newline character
+        System.out.print("Enter city: ");
+        city = scanner.nextLine();
+    }
+
+    // Method to display student information
+    public void displayStudentInfo() {
+        System.out.println("Name: " + name);
+        System.out.println("Roll Number: " + rollNumber);
+        System.out.println("Age: " + age);
+        System.out.println("Result: " + result);
+        System.out.println("City: " + city);
+    }
+
+    // Overloaded method to display partial student information
+    public void displayStudentInfo(boolean displayBasicInfo) {
+        System.out.println("Name: " + name);
+        System.out.println("Roll Number: " + rollNumber);
+
+        if (displayBasicInfo) {
+            System.out.println("City: " + city);
+        }
+    }
+
+    public static void main(String[] args) {
+        // Creating objects using different constructors
+        Student student1 = new Student();
+        Student student2 = new Student("Bond",007);
+        Student student3 = new Student();
+
+        // Setting details using the method
+        student3.setStudentDetails();
+
+        // Displaying student information
+        System.out.println("Student 1 Information:");
+        student1.displayStudentInfo();
+        System.out.println();
+
+        System.out.println("Student 2 Information:");
+        student2.displayStudentInfo();
+        System.out.println();
+
+        System.out.println("Student 3 Information:");
+        student3.displayStudentInfo();
+        System.out.println();
+
+        System.out.println("Student 2 Basic Information:");
+        student2.displayStudentInfo(true);
+    }
+}

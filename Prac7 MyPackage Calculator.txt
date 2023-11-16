@@ -1,0 +1,146 @@
+Prac 7:My Package Calculator
+
+DEMO PACKAGE
+
+package DemoPackage;
+public class Demo {
+    public static boolean isGreaterThan(int a, int b) {
+        return a > b;
+    }
+
+    public static boolean isLessThan(int a, int b) {
+        return a < b;
+    }
+
+    public static double squareRoot(double number) {
+        if (number >= 0) {
+            return Math.sqrt(number);
+        } else {
+            throw new IllegalArgumentException("Square root of a negative number is not allowed");
+        }
+    }
+}
+-----------------------------------------------------------------------------------------------------
+MY PACKAGE
+
+MAIN CLASS
+package MyPackage;
+public class Main {
+    public static int factorial(int n) {
+        if (n == 0 || n == 1) {
+            return 1;
+        } else {
+            int result = 1;
+            for (int i = 1; i <= n; i++) {
+                result *= i;
+            }
+            return result;
+        }
+    }
+
+    public static int addition(int a, int b) {
+        return a + b;
+    }
+
+    public static int subtraction(int a, int b) {
+        return a - b;
+    }
+
+    public static int multiplication(int a, int b) {
+        return a * b;
+    }
+
+    public static double division(double a, double b) {
+        if (b != 0) {
+            return a / b;
+        } else {
+            throw new ArithmeticException("Division by zero is not allowed");
+        }
+    }
+}
+-------------------------------------------------------------------------------
+MY PACKAGE
+CALCULATOR :
+
+package MyPackage;
+import java.util.Scanner;
+
+import DemoPackage.Demo;
+public class Calculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Calculator Menu:");
+        System.out.println("1. Factorial");
+        System.out.println("2. Addition");
+        System.out.println("3. Subtraction");
+        System.out.println("4. Multiplication");
+        System.out.println("5. Division");
+        System.out.println("6. Greater Than");
+        System.out.println("7. Less Than");
+        System.out.println("8. Square Root");
+        System.out.print("Select an operation (1-8): ");
+        int choice = scanner.nextInt();
+
+        switch (choice) {
+            case 1:
+                System.out.print("Enter an integer for factorial: ");
+                int n = scanner.nextInt();
+                int result = Main.factorial(n);
+                System.out.println("Factorial: " + result);
+                break;
+            case 2:
+                System.out.print("Enter two integers for addition (a and b): ");
+                int a = scanner.nextInt();
+                int b = scanner.nextInt();
+                int sum = Main.addition(a, b);
+                System.out.println("Addition: " + sum);
+                break;
+            case 3:
+                System.out.print("Enter two integers for subtraction (a and b): ");
+                a = scanner.nextInt();
+                b = scanner.nextInt();
+                int difference = Main.subtraction(a, b);
+                System.out.println("Subtraction: " + difference);
+                break;
+            case 4:
+                System.out.print("Enter two integers for multiplication (a and b): ");
+                a = scanner.nextInt();
+                b = scanner.nextInt();
+                int product = Main.multiplication(a, b);
+                System.out.println("Multiplication: " + product);
+                break;
+            case 5:
+                System.out.print("Enter two numbers for division (a and b): ");
+                double num1 = scanner.nextDouble();
+                double num2 = scanner.nextDouble();
+                double quotient = Main.division(num1, num2);
+                System.out.println("Division: " + quotient);
+                break;
+            case 6:
+                System.out.print("Enter two integers for comparison (a and b): ");
+                a = scanner.nextInt();
+                b = scanner.nextInt();
+                boolean greater = Demo.isGreaterThan(a, b);
+                System.out.println("Greater Than: " + greater);
+                break;
+            case 7:
+                System.out.print("Enter two integers for comparison (a and b): ");
+                a = scanner.nextInt();
+                b = scanner.nextInt();
+                boolean less = Demo.isLessThan(a, b);
+                System.out.println("Less Than: " + less);
+                break;
+            case 8:
+                System.out.print("Enter a number for square root: ");
+                double number = scanner.nextDouble();
+                double sqrt = Demo.squareRoot(number);
+                System.out.println("Square Root: " + sqrt);
+                break;
+            default:
+                System.out.println("Invalid choice.");
+        }
+
+        scanner.close();
+    }
+}

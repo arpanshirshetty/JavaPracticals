@@ -1,0 +1,65 @@
+Prac 5 :Matrix
+
+import java.util.Scanner;
+class DemoClass {
+    public static void main(String[] args) {
+        Sort sorter = new Sort();
+        Scanner s = new Scanner(System.in);
+        System.out.println("Choices:\n1.Integer Array Sorting\n2.String Array Sorting");
+        System.out.println("Enter your Choice: ");
+        int ch = s.nextInt();
+
+        switch (ch) {
+            case 1:
+                // Integer array
+                Integer[] intArr = new Integer[5];
+                int n;
+                System.out.println("Enter the number of elements you want to store: ");
+                n = s.nextInt();
+                System.out.println("Enter the Array elements:");
+                for (int i = 0; i < n; i++) {
+                    intArr[i] = s.nextInt();
+                }
+                System.out.println("Original Integer Array:");
+                for (Integer element : intArr) {
+                    System.out.print(element + ", ");
+                }
+
+                sorter.sortInt(intArr);
+
+                System.out.println("\nSorted Integer Array:");
+                for (Integer element : intArr) {
+                    System.out.print(element + ", ");
+                }
+
+                break;
+
+            case 2:
+                // String array
+                String[] strArr = new String[5];
+                int m;
+                System.out.println("Enter the number of elements you want to store: ");
+                m = s.nextInt();
+                System.out.println("Enter the Array elements:");
+                for (int i = 0; i < m; i++) {
+                    strArr[i] = s.next();
+                }
+                System.out.println("\n\nOriginal String Array:");
+                for (String element : strArr) {
+                    System.out.print(element + ", ");
+                }
+
+                sorter.sortStr(strArr);
+
+                System.out.println("\nSorted String Array:");
+                for (String element : strArr) {
+                    System.out.print(element + ", ");
+                }
+                break;
+
+            default:
+                System.out.print("Invalid choice");
+                break;
+        }
+    }
+}
