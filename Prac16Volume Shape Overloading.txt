@@ -1,0 +1,166 @@
+Prac16:Volume Shape Overloading
+
+//Class Shape
+
+import java.util.Scanner;
+
+class Shape {
+    // Method to calculate the volume of a cuboid
+    public double calculateVolume(double length, double width, double height) {
+        return length * width * height;
+    }
+
+    // Method to calculate the volume of a cube
+    public double calculateVolume(double side) {
+        return Math.pow(side, 3);
+    }
+
+    // Method to calculate the volume of a cylinder
+    public double calculateVolume(double radius, double height) {
+        return Math.PI * Math.pow(radius, 2) * height;
+    }
+
+    // Method to calculate the volume of a prism
+    public double calculateVolume(double baseArea, double height) {
+        return baseArea * height;
+    }
+
+    // Method to calculate the volume of a sphere
+    public double calculateVolumeSphere(double radius) {
+        return (4.0 / 3.0) * Math.PI * Math.pow(radius, 3);
+    }
+
+    // Method to calculate the volume of a pyramid
+    public double calculateVolumePyramid(double baseArea, double height) {
+        return (1.0 / 3.0) * baseArea * height;
+    }
+
+    // Method to calculate the volume of a cone
+    public double calculateVolumeCone(double radius, double height) {
+        return (1.0 / 3.0) * Math.PI * Math.pow(radius, 2) * height;
+    }
+
+    // Method to calculate the volume of a square or rectangular pyramid
+    public double calculateVolumePyramid(double length, double width, double height) {
+        return (1.0 / 3.0) * length * width * height;
+    }
+
+    // Method to calculate the volume of an ellipsoid
+    public double calculateVolumeEllipsoid(double a, double b, double c) {
+        return (4.0 / 3.0) * Math.PI * a * b * c;
+    }
+
+    // Method to calculate the volume of a tetrahedron
+    public double calculateVolumeTetrahedron(double edge) {
+        return Math.pow(edge, 3) / (6 * Math.sqrt(2));
+    }
+}
+//Class shape demo
+
+import java.util.Scanner;
+public class ShapeDemo {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        Shape shape = new Shape();
+
+        System.out.println("Choose a shape to calculate volume:");
+        System.out.println("1. Cuboid");
+        System.out.println("2. Cube");
+        System.out.println("3. Cylinder");
+        System.out.println("4. Prism");
+        System.out.println("5. Sphere");
+        System.out.println("6. Pyramid");
+        System.out.println("7. Cone");
+        System.out.println("8. Square or Rectangular Pyramid");
+        System.out.println("9. Ellipsoid");
+        System.out.println("10. Tetrahedron");
+
+        System.out.print("Enter your choice (1-10): ");
+        int choice = scanner.nextInt();
+
+        double volume = 0;
+
+        switch (choice) {
+            case 1:
+                System.out.print("Enter length: ");
+                double length = scanner.nextDouble();
+                System.out.print("Enter width: ");
+                double width = scanner.nextDouble();
+                System.out.print("Enter height: ");
+                double height = scanner.nextDouble();
+                volume = shape.calculateVolume(length, width, height);
+                break;
+            case 2:
+                System.out.print("Enter side length: ");
+                double side = scanner.nextDouble();
+                volume = shape.calculateVolume(side);
+                break;
+            case 3:
+                System.out.print("Enter radius: ");
+                double radiusCylinder = scanner.nextDouble();
+                System.out.print("Enter height: ");
+                double heightCylinder = scanner.nextDouble();
+                volume = shape.calculateVolume(radiusCylinder, heightCylinder);
+                break;
+            case 4:
+                System.out.print("Enter base area: ");
+                double baseAreaPrism = scanner.nextDouble();
+                System.out.print("Enter height: ");
+                double heightPrism = scanner.nextDouble();
+                volume = shape.calculateVolume(baseAreaPrism, heightPrism);
+                break;
+            case 5:
+                System.out.print("Enter radius of the sphere: ");
+                double radiusSphere = scanner.nextDouble();
+                volume = shape.calculateVolumeSphere(radiusSphere);
+                break;
+            case 6:
+                System.out.print("Enter base area: ");
+                double baseAreaPyramid = scanner.nextDouble();
+                System.out.print("Enter height: ");
+                double heightPyramid = scanner.nextDouble();
+                volume = shape.calculateVolumePyramid(baseAreaPyramid, heightPyramid);
+                break;
+            case 7:
+                System.out.print("Enter radius of the cone: ");
+                double radiusCone = scanner.nextDouble();
+                System.out.print("Enter height: ");
+                double heightCone = scanner.nextDouble();
+                volume = shape.calculateVolumeCone(radiusCone, heightCone);
+                break;
+            case 8:
+                System.out.print("Enter length of the base: ");
+                double lengthPyramid = scanner.nextDouble();
+                System.out.print("Enter width of the base: ");
+                double widthPyramid = scanner.nextDouble();
+                System.out.print("Enter height: ");
+                double heightPyramid2 = scanner.nextDouble();
+                volume = shape.calculateVolumePyramid(lengthPyramid, widthPyramid, heightPyramid2);
+                break;
+            case 9:
+                System.out.print("Enter semi-axis a: ");
+                double aEllipsoid = scanner.nextDouble();
+                System.out.print("Enter semi-axis b: ");
+                double bEllipsoid = scanner.nextDouble();
+                System.out.print("Enter semi-axis c: ");
+                double cEllipsoid = scanner.nextDouble();
+                volume = shape.calculateVolumeEllipsoid(aEllipsoid, bEllipsoid, cEllipsoid);
+                break;
+            case 10:
+                System.out.print("Enter edge length of the tetrahedron: ");
+                double edgeTetrahedron = scanner.nextDouble();
+                volume = shape.calculateVolumeTetrahedron(edgeTetrahedron);
+                break;
+            default:
+                System.out.println("Invalid choice!");
+                break;
+        }
+
+        if (volume != 0) {
+            System.out.println("Volume: " + volume);
+        }
+
+        scanner.close();
+    }
+}
